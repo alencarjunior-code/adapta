@@ -1,0 +1,237 @@
+/* Estilos gerais */
+body {
+    font-family: 'Sabon', sans-serif; /* Adicionado fonte de fallback genérica */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #ffffff;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* Importação da fonte personalizada KGHardCandySolid */
+@font-face {
+    font-family: 'KGHardCandySolid';
+    src: url('fonts/KGHardCandySolid.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Importação da fonte Sabon */
+@font-face {
+    font-family: 'Sabon';
+    src: url('fonts/Sabon.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Importação da fonte DKLiquidEmbrace */
+@font-face {
+    font-family: 'DKLiquidEmbrace';
+    src: url('fonts/DKLiquidEmbrace.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Container do cabeçalho */
+.main-header {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+/* Conteúdo do cabeçalho */
+.header-content {
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+/* Container de texto principal */
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.text-container {
+    width: 90%;
+    max-width: 1000px;
+}
+
+/* Tipografia */
+h1, h2, h3, h4, h6, .chapter-title {
+    font-family: 'KGHardCandySolid', 'DKLiquidEmbrace', sans-serif;
+    text-align: center;
+    color: #000;
+    margin-top: none; /* Removido para permitir o margin padrão do h1 */
+    margin-bottom: none; /* Removido para permitir o margin padrão do h1 */
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #5fc6c1;
+    font-family: 'DKLiquidEmbrace', sans-serif;
+}
+
+h3 {
+    font-size: 2.5em;
+    color: #5fc6c1;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
+.chapter {
+    text-align: center;
+    font-style: italic;
+    margin-top: 3em;
+    margin-bottom: 2em;
+}
+
+.chapter-title {
+    font-size: 2.5em;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+
+/* Estilos para todas as imagens genéricas */
+.image-placeholder,
+.image-horizontal,
+.cover-image,
+.folharosto-image,
+.image-marca {
+    width: 100%; /* Por padrão, ocupa 100% da largura do contêiner pai */
+    height: auto; /* Mantém a proporção da imagem */
+    max-width: 100%; /* Garante que não exceda a largura original da imagem se o contêiner for maior */
+    background-size: contain; /* Ajusta a imagem inteira dentro do contêiner */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    background-position: center; /* Centraliza a imagem */
+    box-sizing: border-box; /* Inclui padding e border no width/height */
+    margin: 1px auto; /* Centraliza blocos de imagem */
+}
+
+/* Ajustes específicos para as alturas das imagens, se desejar manter alguma proporção visual em desktop */
+/* Para mobile, 'height: auto;' será prioritário devido ao 'width: 100%;' */
+
+.cover-image {
+    height: 600px; /* Altura padrão para desktop */
+}
+
+.folharosto-image {
+    height: 400px; /* Altura padrão para desktop */
+    margin: 80px auto; /* Ajuste a margem se necessário */
+}
+
+.image-marca {
+    height: 25px; /* Altura padrão para desktop */
+    width: 20%; /* manter largura menor para a marca */
+    max-width: 200px; /* Limite a largura da marca se necessário */
+    margin: 80px auto;
+}
+
+.image-placeholder {
+    height: 450px; /* Altura padrão para desktop */
+    width: 50%;
+}
+
+.image-horizontal {
+    height: 350px; /* Altura padrão para desktop */
+    width: 65%;
+}
+
+
+/* Responsividade para desktop: ajusta larguras de texto e imagens para telas maiores */
+@media (min-width: 1024px) {
+    .text-container,
+    .header-content {
+        width: 50%; /* Ocupa 50% da largura da tela */
+        padding: 0 20px;
+    }
+
+    .image-placeholder {
+        width: 50%; /* Volta para a largura original para desktop */
+    }
+
+    .image-horizontal {
+        width: 65%; /* Volta para a largura original para desktop */
+    }
+
+    .cover-image,
+    .folharosto-image {
+        width: 60%; /* Volta para a largura original para desktop */
+    }
+}
+
+/* Ajustes para telas menores (smartphones) */
+@media (max-width: 768px) {
+    .text-container,
+    .header-content {
+        padding: 0 10px;
+        width: 95%; /* Aumenta a largura para ocupar mais espaço em telas pequenas */
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 2em; /* Reduz um pouco o tamanho para mobile se estiver muito grande */
+    }
+    
+    .chapter-title {
+        font-size: 1.8em;
+    }
+
+    /* As regras de imagem padrão (width: 100%; height: auto;) já lidam com a maioria dos casos em mobile */
+    /* Se precisar de ajustes específicos para alguma imagem em mobile, pode adicionar aqui */
+}
+
+
+/* Estilos para o link "Voltar ao Início" */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #5fc6c1;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: #39a7a2;
+}
+
+/* Estilos para os links dentro da seção de sumário */
+.summary a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.summary a:hover {
+    text-decoration: underline;
+}
