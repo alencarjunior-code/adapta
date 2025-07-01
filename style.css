@@ -1,6 +1,6 @@
 /* Estilos gerais */
 body {
-    font-family: 'Sabon', sans-serif; /* Adicionado fonte de fallback genérica */
+    font-family: 'Sabon', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -70,8 +70,8 @@ h1, h2, h3, h4, h6, .chapter-title {
     font-family: 'KGHardCandySolid', 'DKLiquidEmbrace', sans-serif;
     text-align: center;
     color: #000;
-    margin-top: none; /* Removido para permitir o margin padrão do h1 */
-    margin-bottom: none; /* Removido para permitir o margin padrão do h1 */
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 h1 {
@@ -108,71 +108,77 @@ h4 {
     margin-top: 0.5em;
 }
 
-/* Estilos para todas as imagens genéricas */
+/* Estilos para as imagens de fundo */
 .image-placeholder,
 .image-horizontal,
 .cover-image,
 .folharosto-image,
 .image-marca {
-    width: 100%; /* Por padrão, ocupa 100% da largura do contêiner pai */
-    height: auto; /* Mantém a proporção da imagem */
-    max-width: 100%; /* Garante que não exceda a largura original da imagem se o contêiner for maior */
-    background-size: contain; /* Ajusta a imagem inteira dentro do contêiner */
-    background-repeat: no-repeat; /* Evita que a imagem se repita */
-    background-position: center; /* Centraliza a imagem */
-    box-sizing: border-box; /* Inclui padding e border no width/height */
-    margin: 1px auto; /* Centraliza blocos de imagem */
+    width: 100%; /* Ocupa 100% da largura do contêiner pai */
+    height: 0; /* Define a altura para 0 para usar padding-bottom para proporção */
+    padding-bottom: 75%; /* Proporção 4:3 (altura 75% da largura). Ajuste conforme a proporção das suas ilustrações. */
+    background-size: contain; /* A imagem inteira é visível, ajustando-se dentro do elemento */
+    background-position: center; /* Centraliza a imagem de fundo */
+    background-repeat: no-repeat; /* Evita repetição */
+    box-sizing: border-box;
+    margin: 1px auto;
 }
 
-/* Ajustes específicos para as alturas das imagens, se desejar manter alguma proporção visual em desktop */
-/* Para mobile, 'height: auto;' será prioritário devido ao 'width: 100%;' */
-
+/* Ajustes de proporção para imagens específicas se elas tiverem proporções muito diferentes */
+/* Ex: Se 'cover-image' for mais vertical (ex: 2:3), use um padding-bottom maior como 150% */
 .cover-image {
-    height: 600px; /* Altura padrão para desktop */
+    padding-bottom: 150%; /* Exemplo: se a imagem de capa for mais alta (2:3) */
 }
 
 .folharosto-image {
-    height: 400px; /* Altura padrão para desktop */
-    margin: 80px auto; /* Ajuste a margem se necessário */
+    padding-bottom: 100%; /* Exemplo: se a imagem da folha de rosto for quadrada (1:1) */
 }
 
 .image-marca {
-    height: 25px; /* Altura padrão para desktop */
     width: 20%; /* manter largura menor para a marca */
     max-width: 200px; /* Limite a largura da marca se necessário */
+    padding-bottom: 10%; /* Ajuste para a altura da marca */
     margin: 80px auto;
 }
 
-.image-placeholder {
-    height: 450px; /* Altura padrão para desktop */
-    width: 50%;
-}
-
-.image-horizontal {
-    height: 350px; /* Altura padrão para desktop */
-    width: 65%;
-}
-
-
-/* Responsividade para desktop: ajusta larguras de texto e imagens para telas maiores */
+/* Responsividade para desktop: ajusta larguras de texto e larguras específicas de imagens */
 @media (min-width: 1024px) {
     .text-container,
     .header-content {
-        width: 50%; /* Ocupa 50% da largura da tela */
+        width: 50%;
         padding: 0 20px;
     }
 
+    /* As imagens voltam a ter as larguras e alturas fixas ou proporcionais que você deseja em desktop */
     .image-placeholder {
-        width: 50%; /* Volta para a largura original para desktop */
+        width: 50%;
+        height: 450px; /* Volta para altura fixa em desktop */
+        padding-bottom: 0; /* Remove padding-bottom quando altura fixa é definida */
     }
 
     .image-horizontal {
-        width: 65%; /* Volta para a largura original para desktop */
+        width: 65%;
+        height: 350px; /* Volta para altura fixa em desktop */
+        padding-bottom: 0;
     }
 
-    .cover-image,
+    .cover-image {
+        width: 60%;
+        height: 600px; /* Volta para altura fixa em desktop */
+        padding-bottom: 0;
+    }
+
     .folharosto-image {
-        width: 60%; /* Volta para a largura original para desktop */
+        width: 60%;
+        height: 400px; /* Volta para altura fixa em desktop */
+        padding-bottom: 0;
+    }
+
+    /* A imagem de marca pode manter a largura em porcentagem e altura automática */
+    .image-marca {
+        width: 20%;
+        height: 25px; /* Volta para altura fixa em desktop */
+        padding-bottom: 0;
     }
 }
 
@@ -181,7 +187,7 @@ h4 {
     .text-container,
     .header-content {
         padding: 0 10px;
-        width: 95%; /* Aumenta a largura para ocupar mais espaço em telas pequenas */
+        width: 95%;
     }
 
     h1 {
@@ -191,19 +197,19 @@ h4 {
     h2 {
         font-size: 1.5em;
     }
-
-    h3 {
-        font-size: 2em; /* Reduz um pouco o tamanho para mobile se estiver muito grande */
-    }
     
+    h3 {
+        font-size: 2em;
+    }
+
     .chapter-title {
         font-size: 1.8em;
     }
 
-    /* As regras de imagem padrão (width: 100%; height: auto;) já lidam com a maioria dos casos em mobile */
-    /* Se precisar de ajustes específicos para alguma imagem em mobile, pode adicionar aqui */
+    /* Para mobile, as regras de 'width: 100%; height: 0; padding-bottom: X%;' definidas globalmente para as imagens */
+    /* já garantem o comportamento desejado de preencher a largura e manter a proporção */
+    /* sem cortes. Não é necessário repetir aqui, a menos que queira uma proporção diferente para mobile */
 }
-
 
 /* Estilos para o link "Voltar ao Início" */
 .back-to-top {
